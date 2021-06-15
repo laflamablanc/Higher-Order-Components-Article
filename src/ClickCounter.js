@@ -4,7 +4,9 @@ import withCounter from './withCounter'
 const ClickCounter = ({count, incrementCount}) => {
     return (
         <button onClick ={incrementCount}>
-            Click {count} times
+            Clicked {count} times
         </button>
     )
 }
+
+export default withCounter(ClickCounter)

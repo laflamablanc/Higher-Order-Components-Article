@@ -1,27 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const withCounter = OriginalComponent => {
-    class NewComponent extends React.Component {
+    const EnhancedComponent = () => {
 
-       state ={
-           count: 0
-       }
+       const [count, setCount] = useState(0)
+       const incrementCount = () => setCount(prevCount => prevCount - 1)
 
-        incrementCounter = () => {
-            this.setState (prevState => {
-                return { count: prevState.count + 1}
-            })
-        }
-
-        render () {
-            return (
-                <OriginalComponent 
-                    incrementCounter ={incrementCounter} 
-                    count={count}
-                />
-            )
-        }
+        return (
+            <OriginalComponent 
+                incrementCount ={incrementCount} 
+                count={count}
+            />
+        )
     }
+    return EnhancedComponent
 }
 
 export default withCounter
